@@ -10,7 +10,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.end_headers()
         msg = 'Hello, FISH ! you requested %s' % (self.path)
-        f = open("demofile.txt", "r")
+        f = open("/static/demofile2.txt", "r")
         msg = f.read();
         self.wfile.write(msg.encode())
 
