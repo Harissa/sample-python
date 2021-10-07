@@ -1,21 +1,20 @@
-import os
-import http.server
-import socketserver
+from flask import Flask
 
-from http import HTTPStatus
+# Create an instance of the Flask class that is the WSGI application.
+# The first argument is the name of the application module or package,
+# typically __name__ when using a single module.
+app = Flask(__name__)
 
+# Flask route decorators map / and /hello to the hello function.
+# To add other resources, create functions that generate the page contents
+# and add decorators to define the appropriate resource locators for them.
 
-class Handler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(HTTPStatus.OK)
-        self.end_headers()
-        msg = 'Hello, FISH ! you requested %s' % (self.path)
-        f = open("static/demofile2.txt", "r")
-        msg = f.read()
-        self.wfile.write(msg.encode())
+@app.route('/')
+@app.route('/hello')
+def hello():
+    # Render the page
+    return "Hello Python! flask is working"
 
-
-port = int(os.getenv('PORT', 8080))
-print('Listening on port %s' % (port))
-httpd = socketserver.TCPServer(('', port), Handler)
-httpd.serve_forever()
+if __name__ == '__main__':
+    # Run the app server on localhost:4449
+    app.run('localhost', 4449)
