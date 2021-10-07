@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/hello')
 def hello():
     # Render the page
-    return "Hello Python! Waitress brings flask so its working"
+    return "Hello Python! Sample Python Waitress brings flask so its working"
 
 if __name__ == '__main__':
     from waitress import serve
