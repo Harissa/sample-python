@@ -1,1 +1,2 @@
 Flask==2.0.2
+Waitress==2.0.0

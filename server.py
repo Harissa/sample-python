@@ -16,5 +16,7 @@ def hello():
     return "Hello Python! flask is working"
 
 if __name__ == '__main__':
-    # Run the app server on localhost:4449
-    app.run('localhost', 4449)
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
+     # Run the app server on localhost:4449
+    # app.run('localhost', 4449)
